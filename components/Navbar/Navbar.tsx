@@ -1,32 +1,50 @@
 // components/TopBar.tsx
-import React from 'react';
-import Link from 'next/link';
-import BellIcon from '@/Icons/NotificationIcon';
+"use client";
+import React from "react";
+import Link from "next/link";
+import BellIcon from "@/Icons/NotificationIcon";
+import Button from "../Button/Button";
+import { useRouter } from 'next/navigation';
 
-const TopBar:React.FC = () => {
+const TopBar: React.FC = () => 
+  {
+    const router = useRouter();
+  const handleClick = () => {
+    console.log("Button clicked!");
+    router.push('/login');
+
+  };
+
   return (
     <div className=" bg-gray-200 text-white py-4 px-6 flex justify-between items-center border border-sky-500">
-     {/*} <div className="logo">
+      {/*} <div className="logo">
         <Link href="/" legacyBehavior>
           <a className="text-xl font-bold"></a>
         </Link>
       </div>
   */}
-        <div className="">
+      <div className="">
         <Link href="/" legacyBehavior>
-          <a className="text-2xl font-bold text-center px-4 text-black  ">Dev Blogs</a>
+          <a className="text-2xl font-bold text-center px-4 text-black  ">
+            Dev Blogs
+          </a>
         </Link>
       </div>
       <div className="mb-4 w-full max-w-md">
         <input
           type="text"
           placeholder="Search..."
-          className="rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-10" 
+          className="rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-10"
         />
       </div>
+
+      {/* Profile and Notification */}
       <div className="profile-and-notification flex items-center">
+        <Button onClick={handleClick} className="">
+          Login
+        </Button>
         <div className="notification mr-4">
-        <BellIcon/>
+          <BellIcon />
         </div>
         <div className="profile">
           <button className="flex items-center">
